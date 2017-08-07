@@ -2,8 +2,7 @@
 
 > A boilerplate for star a new project with millennium, redux and other cool things.
 
-## Note: This project use millenniumjs
-[DEMO](http://millenniumjs.github.io/millennium-redux-boilerplate)
+> Note: This project use millenniumjs 1.0.0-alpha
 
 ## Stack
 

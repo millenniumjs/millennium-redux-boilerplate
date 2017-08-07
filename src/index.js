@@ -1,4 +1,4 @@
-import millennium from '../../millenniumjs/dist/millennium';
+import millennium from 'millenniumjs';
 import store from './store/store';
 import App from './components/App.js';
 

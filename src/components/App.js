@@ -1,4 +1,4 @@
-import millennium from '../../../millenniumjs/dist/millennium';
+import millennium from 'millenniumjs';
 import { addItem } from '../actions/actions';
 import List from './List';
 

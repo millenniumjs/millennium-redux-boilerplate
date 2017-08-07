@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "immutability-helper": "^2.3.0",
+    "millenniumjs": "^1.0.0-alpha",
     "redux": "^3.7.2"
   }
 }
