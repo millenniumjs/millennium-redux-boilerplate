@@ -8,7 +8,7 @@
 
 ![App demo](demo.gif)
 
-See an [online DEMO](http://millenniumjs.github.io/millennium-redux-boilerplate) :)
+See an [online DEMO](https://millenniumjs.github.io/millennium-redux-boilerplate/) :)
 
 ## Stack
 
