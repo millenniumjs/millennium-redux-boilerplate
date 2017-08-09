@@ -1,6 +1,6 @@
 import millennium from 'millenniumjs';
 import store from './store/store';
-import App from './components/App.js';
+import App from './components/App';
 
 const render = () => {
   const rootElement = document.getElementById('root');

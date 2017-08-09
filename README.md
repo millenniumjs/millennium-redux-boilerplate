@@ -2,7 +2,9 @@
 
 > A boilerplate for star a new project with millennium, redux and other cool things.
 
-> Note: This project use millenniumjs 1.0.0-alpha
+[![Build Status](https://travis-ci.org/millenniumjs/millennium-redux-boilerplate.svg?branch=master)](https://travis-ci.org/millenniumjs/millennium-redux-boilerplate)
+
+> **Note:** This project use [millenniumjs 1.1.0-alpha](https://github.com/millenniumjs/millenniumjs/releases/tag/1.0.0-alpha)
 
 ## Stack
 
@@ -11,10 +13,8 @@
 - [babel](https://babeljs.io/)
 - [redux](http://redux.js.org/)
 - [immutability-helper](https://github.com/kolodny/immutability-helper)
-- [eslint](http://eslint.org/)
-- [jest](https://facebook.github.io/jest/)
+- [mocha](https://mochajs.org/)
 - [jsdom](https://github.com/tmpvar/jsdom)
-
 
 ## Run the project locally
 
@@ -47,7 +47,7 @@ $ npm start
 	|   ├── assets/
 	|   |   └── ?
 	|   ├── tests/
-	|   |   └── ?
+	|   |   └── App.test.js
 	|   ├── store/
 	|   |   └── store.js
 	|   ├── actions/
