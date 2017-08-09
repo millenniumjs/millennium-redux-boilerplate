@@ -5,12 +5,7 @@ import App from './components/App';
 const rootElement = document.getElementById('root');
 
 const render = () => {
-
-  millennium.render(
-    <App store = { store } state = { store.getState() } />,
-    rootElement
-  );
-
+  millennium.render(<App state = { store.getState() } />, rootElement);
 }
 
 render();

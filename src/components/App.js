@@ -1,28 +1,16 @@
 import millennium from 'millenniumjs';
-import { addItem } from '../actions/actions';
+import Header from './Header';
+import Form from './Form';
 import List from './List';
 
-const App = ({ store, state }) => {
-
-  function add() {
-    const input = millennium.refs.inputText;
-
-    addItem(input.value, () => {
-      input.value = "";
-    });
-  }
-
+const App = ({ state }) => {
   return (
-    <div>
-
-      <input type = "text" ref = "inputText" />
-      <button onClick = { add }> Add item </button>
-
+    <div class = "app">
+      <Header />
+      <Form />
       <List items = { state } />
-
     </div>
   )
-
 }
 
 export default App;

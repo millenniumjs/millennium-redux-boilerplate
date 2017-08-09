@@ -6,10 +6,14 @@
 
 > **Note:** This project use [millenniumjs 1.2.1-alpha](https://github.com/millenniumjs/millenniumjs/releases/tag/1.2.1-alpha)
 
+![App demo](demo.gif)
+
+See an [online DEMO](http://millenniumjs.github.io/millennium-redux-boilerplate) :)
+
 ## Stack
 
 - Stateless/Functional components: [millenniumjs](http://millenniumjs.github.io/)
--  States Manager: [redux](http://redux.js.org/)
+- States Manager: [redux](http://redux.js.org/)
 - Build: [webpack](https://webpack.github.io/) | [babel](https://babeljs.io/)
 - Tests: [mocha](https://mochajs.org/) | [jsdom](https://github.com/tmpvar/jsdom)
 
@@ -38,11 +42,12 @@ $ npm start
 	├── config/
 	├── scripts/
 	├── public/
+	|   ├── assets/
+	|   |   └── css/
+	|   |   └── img/
 	|   ├── favicon.png
 	|   └── index.html
 	├── src/
-	|   ├── assets/
-	|   |   └── ?
 	|   ├── tests/
 	|   |   └── App.test.js
 	|   ├── store/
