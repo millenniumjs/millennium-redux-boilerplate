@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -83,22 +83,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(10);
+var _redux = __webpack_require__(11);
 
 var reducer = function reducer(state, action) {
 
   switch (action.type) {
+
+    // ADD
     case 'ADD_TEXT':
-      return state = state.concat(action.text);
+
+      var concatenedArray = state.concat(action.text);
+
+      return state = concatenedArray;
       break;
+
+    // DELETE
+    case 'DELETE_TEXT':
+
+      var filteredArray = state.filter(function (item, index) {
+        return index !== action.id;
+      });
+
+      return state = filteredArray;
+      break;
+
   }
 
   return state;
 };
 
 var initialState = [];
-
-var store = (0, _redux.createStore)(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+var store = (0, _redux.createStore)(reducer, initialState);
 
 exports.default = store;
 
@@ -300,7 +315,7 @@ process.umask = function() { return 0; };
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActionTypes; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = createStore;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_symbol_observable__);
 
 
@@ -556,9 +571,9 @@ var ActionTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(19);
 
 
 
@@ -628,7 +643,7 @@ function isPlainObject(value) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(13);
 
 
 /** Built-in value references. */
@@ -738,6 +753,45 @@ function compose() {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addItem = addItem;
+exports.removeItem = removeItem;
+
+var _store = __webpack_require__(1);
+
+var _store2 = _interopRequireDefault(_store);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function addItem(text) {
+  var cb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {
+    return text;
+  };
+
+  if (text) {
+    _store2.default.dispatch({ type: 'ADD_TEXT', text: text });
+    cb();
+  }
+}
+
+function removeItem(id) {
+  var cb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {
+    return id;
+  };
+
+  _store2.default.dispatch({ type: 'DELETE_TEXT', id: id });
+  cb();
+}
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _millenniumjs = __webpack_require__(0);
 
 var _millenniumjs2 = _interopRequireDefault(_millenniumjs);
@@ -746,7 +800,7 @@ var _store = __webpack_require__(1);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _App = __webpack_require__(26);
+var _App = __webpack_require__(27);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -755,23 +809,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var rootElement = document.getElementById('root');
 
 var render = function render() {
-
-  _millenniumjs2.default.render(_millenniumjs2.default.component(_App2.default, { store: _store2.default, state: _store2.default.getState() }), rootElement);
+  _millenniumjs2.default.render(_millenniumjs2.default.component(_App2.default, { state: _store2.default.getState() }), rootElement);
 };
 
 render();
 _store2.default.subscribe(render);
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(7);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
@@ -800,13 +853,13 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(16);
 
 
 
@@ -838,11 +891,11 @@ function baseGetTag(value) {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(14);
 
 
 /** Detect free variable `self`. */
@@ -855,7 +908,7 @@ var root = __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__["a" /* default */] || fr
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -867,7 +920,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(6)))
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -921,7 +974,7 @@ function getRawTag(value) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -950,11 +1003,11 @@ function objectToString(value) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(18);
 
 
 /** Built-in value references. */
@@ -964,7 +1017,7 @@ var getPrototype = Object(__WEBPACK_IMPORTED_MODULE_0__overArg_js__["a" /* defau
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -986,7 +1039,7 @@ function overArg(func, transform) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1022,14 +1075,14 @@ function isObjectLike(value) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(20);
+module.exports = __webpack_require__(21);
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1039,7 +1092,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ponyfill = __webpack_require__(22);
+var _ponyfill = __webpack_require__(23);
 
 var _ponyfill2 = _interopRequireDefault(_ponyfill);
 
@@ -1062,10 +1115,10 @@ if (typeof self !== 'undefined') {
 
 var result = (0, _ponyfill2['default'])(root);
 exports['default'] = result;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(21)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(22)(module)))
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -1093,7 +1146,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1122,7 +1175,7 @@ function symbolObservablePonyfill(root) {
 };
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1263,7 +1316,7 @@ function combineReducers(reducers) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1317,7 +1370,7 @@ function bindActionCreators(actionCreators, dispatch) {
 }
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1373,7 +1426,7 @@ function applyMiddleware() {
 }
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1387,70 +1440,33 @@ var _millenniumjs = __webpack_require__(0);
 
 var _millenniumjs2 = _interopRequireDefault(_millenniumjs);
 
-var _actions = __webpack_require__(27);
+var _Header = __webpack_require__(28);
 
-var _List = __webpack_require__(28);
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Form = __webpack_require__(29);
+
+var _Form2 = _interopRequireDefault(_Form);
+
+var _List = __webpack_require__(30);
 
 var _List2 = _interopRequireDefault(_List);
-
-__webpack_require__(29);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App(_ref) {
-  var store = _ref.store,
-      state = _ref.state;
-
-
-  function add() {
-    var input = _millenniumjs2.default.refs.inputText;
-
-    (0, _actions.addItem)(input.value, function () {
-      input.value = "";
-    });
-  }
+  var state = _ref.state;
 
   return _millenniumjs2.default.component(
     'div',
-    null,
-    _millenniumjs2.default.component('input', { type: 'text', ref: 'inputText' }),
-    _millenniumjs2.default.component(
-      'button',
-      { onClick: add, id: 's' },
-      ' Add item '
-    ),
+    { 'class': 'app' },
+    _millenniumjs2.default.component(_Header2.default, null),
+    _millenniumjs2.default.component(_Form2.default, null),
     _millenniumjs2.default.component(_List2.default, { items: state })
   );
 };
 
 exports.default = App;
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addItem = addItem;
-
-var _store = __webpack_require__(1);
-
-var _store2 = _interopRequireDefault(_store);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function addItem(text) {
-  var cb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {
-    return text;
-  };
-
-  _store2.default.dispatch({ type: 'ADD_TEXT', text: text });
-  cb();
-}
 
 /***/ }),
 /* 28 */
@@ -1469,122 +1485,131 @@ var _millenniumjs2 = _interopRequireDefault(_millenniumjs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var List = function List(_ref) {
-  var items = _ref.items;
-
-
-  var list = items.map(function (listItem) {
-    return _millenniumjs2.default.component(
-      'li',
-      null,
-      listItem
-    );
-  });
+var Header = function Header() {
 
   return _millenniumjs2.default.component(
-    'ul',
-    null,
-    list
+    "header",
+    { className: "header" },
+    _millenniumjs2.default.component("img", { src: "assets/img/redux-logo.svg", className: "header__logo" }),
+    _millenniumjs2.default.component(
+      "h1",
+      { className: "header__heading" },
+      _millenniumjs2.default.component(
+        "a",
+        { href: "http://millenniumjs.github.io/", target: "_blank", className: "header__heading__link" },
+        "millenniumJS"
+      ),
+      " + redux"
+    )
   );
 };
 
-exports.default = List;
+exports.default = Header;
 
 /***/ }),
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(30)(undefined);
-// imports
+"use strict";
 
 
-// module
-exports.push([module.i, "#s {\n\tbackground: red;\n}", ""]);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-// exports
+var _millenniumjs = __webpack_require__(0);
 
+var _millenniumjs2 = _interopRequireDefault(_millenniumjs);
+
+var _actions = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Form = function Form() {
+
+  function makeClickable(e) {
+    var pressEnter = e.which == 13 || e.keyCode == 13;
+
+    if (pressEnter) {
+      addComment();
+    }
+  }
+
+  function addComment() {
+    var input = _millenniumjs2.default.refs.inputText;
+
+    (0, _actions.addItem)(input.value, function () {
+      input.value = '';
+    });
+  }
+
+  return _millenniumjs2.default.component(
+    'div',
+    { className: 'form' },
+    _millenniumjs2.default.component('input', {
+      type: 'text',
+      placeholder: 'You have a comment ?',
+      ref: 'inputText',
+      className: 'form__input',
+      onkeypress: makeClickable
+    }),
+    _millenniumjs2.default.component(
+      'button',
+      { onClick: addComment, className: 'form__btn' },
+      'Add comment'
+    )
+  );
+};
+
+exports.default = Form;
 
 /***/ }),
 /* 30 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
+"use strict";
 
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
 
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _millenniumjs = __webpack_require__(0);
+
+var _millenniumjs2 = _interopRequireDefault(_millenniumjs);
+
+var _actions = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var List = function List(_ref) {
+  var items = _ref.items;
+
+
+  var list = items.map(function (listItem, index) {
+
+    return _millenniumjs2.default.component(
+      'li',
+      { className: 'list__item' },
+      listItem,
+      _millenniumjs2.default.component(
+        'button',
+        { onClick: function onClick() {
+            return (0, _actions.removeItem)(index);
+          }, className: 'form__btn list__item__buttons' },
+        'Remove'
+      )
+    );
+  });
+
+  return _millenniumjs2.default.component(
+    'ul',
+    { className: 'list' },
+    list
+  );
 };
 
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
+exports.default = List;
 
 /***/ })
 /******/ ]);
