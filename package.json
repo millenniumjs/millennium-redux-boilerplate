@@ -21,7 +21,6 @@
     "webpack-dev-server": "^2.6.1"
   },
   "dependencies": {
-    "immutability-helper": "^2.3.0",
     "millenniumjs": "^1.2.1-alpha",
     "redux": "^3.7.2"
   }

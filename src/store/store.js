@@ -1,11 +1,10 @@
 import { createStore } from 'redux';
-import update from 'immutability-helper';
 
 const reducer = (state, action) => {
 
   switch (action.type) {
     case ('ADD_TEXT'):
-      return state = update(state, { $push: [action.text] });
+      return state = state.concat(action.text);
       break;
   }
 

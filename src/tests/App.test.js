@@ -8,8 +8,14 @@ describe('<App/>', () => {
   jsdom()
 
   it('Renders <App /> with Redux without crashing', () => {
+
     const root = document.createElement('div');
-    millennium.render(<App store={store} state={store.getState()} />, root);
+
+    millennium.render(
+      <App store = { store } state = { store.getState() } />,
+      root
+    );
+
   });
 
 });

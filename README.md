@@ -8,13 +8,10 @@
 
 ## Stack
 
-- [millenniumjs](http://millenniumjs.github.io/)
-- [webpack](https://webpack.github.io/)
-- [babel](https://babeljs.io/)
-- [redux](http://redux.js.org/)
-- [immutability-helper](https://github.com/kolodny/immutability-helper)
-- [mocha](https://mochajs.org/)
-- [jsdom](https://github.com/tmpvar/jsdom)
+- Stateless/Functional components: [millenniumjs](http://millenniumjs.github.io/)
+-  States Manager: [redux](http://redux.js.org/)
+- Build: [webpack](https://webpack.github.io/) | [babel](https://babeljs.io/)
+- Tests: [mocha](https://mochajs.org/) | [jsdom](https://github.com/tmpvar/jsdom)
 
 ## Run the project locally
 
