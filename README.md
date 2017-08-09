@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/millenniumjs/millennium-redux-boilerplate.svg?branch=master)](https://travis-ci.org/millenniumjs/millennium-redux-boilerplate)
 
-> **Note:** This project use [millenniumjs 1.1.0-alpha](https://github.com/millenniumjs/millenniumjs/releases/tag/1.0.0-alpha)
+> **Note:** This project use [millenniumjs 1.2.1-alpha](https://github.com/millenniumjs/millenniumjs/releases/tag/1.2.1-alpha)
 
 ## Stack
 

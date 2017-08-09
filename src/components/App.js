@@ -18,7 +18,7 @@ const App = ({ store, state }) => {
       <input type = "text" ref = "inputText" />
       <button onClick = { add }> Add item </button>
 
-      <List items={state}/>
+      <List items = { state } />
 
     </div>
   )
